@@ -15,11 +15,11 @@ interface SiteSeed {
 const CATEGORY_BASE_HUE: Record<string, number> = {
   portal: 212,
   ai: 226,
-  image: 30,
+  image: 24,
   tool: 268,
   service: 153,
-  converter: 10,
-  network: 45,
+  converter: 348,
+  network: 42,
   math: 52,
   dev: 168,
 }
@@ -96,9 +96,9 @@ const resolveColor = (site: SiteSeed): number => {
 
   const hash = hashString(`${site.category}:${site.id}`)
   const baseHue = CATEGORY_BASE_HUE[site.category] ?? (hash % 360)
-  const hueOffset = (hash % 19) - 9
-  const saturation = 28 + (Math.floor(hash / 19) % 14)
-  const lightness = 56 + (Math.floor(hash / 37) % 13)
+  const hueOffset = (hash % 15) - 7
+  const saturation = 56 + (Math.floor(hash / 19) % 18)
+  const lightness = 50 + (Math.floor(hash / 37) % 13)
 
   return hslToHex((baseHue + hueOffset + 360) % 360, saturation, lightness)
 }
