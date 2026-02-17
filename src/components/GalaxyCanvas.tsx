@@ -264,10 +264,10 @@ export function GalaxyCanvas({
     scene.add(deepStars)
     disposableResources.push(deepGeometry, deepMaterial)
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe7e1d3, 0.72)
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.35)
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe7e1d3, 0.96)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 0.46)
     keyLight.position.set(10, 14, 10)
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.18)
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.28)
     fillLight.position.set(-10, -4, -8)
     scene.add(hemiLight, keyLight, fillLight)
 
@@ -292,6 +292,7 @@ export function GalaxyCanvas({
 
       const sphereMaterial = new THREE.MeshLambertMaterial({
         color: site.color,
+        emissive: new THREE.Color(site.color).multiplyScalar(0.08),
       })
       const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial) as NodeMesh
       sphere.userData = { site }
