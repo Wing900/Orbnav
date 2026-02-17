@@ -13,7 +13,7 @@ const DISTURB_INTENSITY = 0.62
 
 type Disposable = { dispose: () => void }
 
-type NodeMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshStandardMaterial> & {
+type NodeMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshLambertMaterial> & {
   userData: { site: SiteNode }
 }
 
@@ -154,8 +154,7 @@ export function GalaxyCanvas({
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.04
+    renderer.toneMapping = THREE.NoToneMapping
     container.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -265,14 +264,12 @@ export function GalaxyCanvas({
     scene.add(deepStars)
     disposableResources.push(deepGeometry, deepMaterial)
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.42)
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.92)
-    keyLight.position.set(14, 18, 16)
-    const fillLight = new THREE.DirectionalLight(0xffffff, 0.2)
-    fillLight.position.set(-16, -6, -10)
-    const rimLight = new THREE.DirectionalLight(0xffffff, 0.32)
-    rimLight.position.set(0, 8, -20)
-    scene.add(ambientLight, keyLight, fillLight, rimLight)
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe7e1d3, 0.72)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 0.35)
+    keyLight.position.set(10, 14, 10)
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.18)
+    fillLight.position.set(-10, -4, -8)
+    scene.add(hemiLight, keyLight, fillLight)
 
     const nodesGroup = new THREE.Group()
     const nodeMeshes: NodeMesh[] = []
@@ -293,10 +290,8 @@ export function GalaxyCanvas({
         floatSpeed: 1 + Math.random() * 0.5,
       }
 
-      const sphereMaterial = new THREE.MeshStandardMaterial({
+      const sphereMaterial = new THREE.MeshLambertMaterial({
         color: site.color,
-        roughness: 0.47,
-        metalness: 0.1,
       })
       const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial) as NodeMesh
       sphere.userData = { site }
