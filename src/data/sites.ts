@@ -97,8 +97,8 @@ const resolveColor = (site: SiteSeed): number => {
   const hash = hashString(`${site.category}:${site.id}`)
   const baseHue = CATEGORY_BASE_HUE[site.category] ?? (hash % 360)
   const hueOffset = (hash % 15) - 7
-  const saturation = 56 + (Math.floor(hash / 19) % 18)
-  const lightness = 50 + (Math.floor(hash / 37) % 13)
+  const saturation = 34 + (Math.floor(hash / 19) % 15)
+  const lightness = 58 + (Math.floor(hash / 37) % 11)
 
   return hslToHex((baseHue + hueOffset + 360) % 360, saturation, lightness)
 }

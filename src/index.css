@@ -6,7 +6,7 @@
   --text-muted: #666666;
   --line: rgba(0, 0, 0, 0.1);
   --card-bg: rgba(255, 255, 255, 0.65);
-  --shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  --shadow: 0 24px 68px rgba(0, 0, 0, 0.11);
 }
 
 * {
@@ -93,6 +93,7 @@ body {
   font-weight: 600;
   opacity: 0.85;
   text-transform: uppercase;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .brand-subtitle {
@@ -114,7 +115,7 @@ body {
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.18s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 }
 
 .hover-tooltip.visible {
@@ -168,11 +169,33 @@ body {
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(250, 247, 241, 0.52) 100%
+  );
+}
+
+.preview-title-link {
+  color: #38342f;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(56, 52, 47, 0.2);
+  transition: color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.preview-title-link:hover {
+  color: #25221f;
+  border-color: rgba(37, 34, 31, 0.58);
+  opacity: 0.92;
 }
 
 .preview-title {
   font-size: 1.2rem;
   font-weight: 500;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
 }
 
 .close-btn {

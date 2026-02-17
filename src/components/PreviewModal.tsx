@@ -47,7 +47,18 @@ export function PreviewModal({ site, onClose }: PreviewModalProps) {
     >
       <article className="preview-card">
         <header className="preview-header">
-          <span className="preview-title">{site?.name ?? 'Website Title'}</span>
+          {site ? (
+            <a
+              className="preview-title-link"
+              href={site.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {site.name}
+            </a>
+          ) : (
+            <span className="preview-title">Website Title</span>
+          )}
           <button
             type="button"
             className="close-btn"
