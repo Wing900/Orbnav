@@ -126,6 +126,8 @@ const seeds: SiteSeed[] = [
   { id: 'proxy', name: 'proxy', subdomain: 'proxy', category: 'network', description: '代理与转发入口。' },
   { id: 'manimcat', name: 'manimcat', subdomain: 'manimcat', category: 'math', description: '可视化/动画相关节点。' },
   { id: 'pyweb', name: 'pyweb', subdomain: 'pyweb', category: 'dev', description: 'Python Web 相关节点。' },
+  { id: 'prompt', name: 'prompt', subdomain: 'prompt', category: 'ai', description: 'Prompt 提示词工具。' },
+  { id: 'c2w', name: 'C2W', subdomain: 'C2W', category: 'converter', description: 'C2W 转换服务。' },
 ]
 
 export const sites: SiteNode[] = seeds.map((site, index) => ({
